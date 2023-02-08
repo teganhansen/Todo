@@ -1,0 +1,28 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    text-decoration: none;
+    font: inherit;
+}
+
+body {
+    width: 100%;
+    background-color: #dfd7f9;
+    display: flex;
+    justify-content: center;
+}
+main {
+    margin-top: 75px;
+    width: 80%;
+    height: 650px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+}
+nav {
+    width: 20%;
+    text-align: center;
+    border-right: #dfd7f9 solid 3px;
+}
