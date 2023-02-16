@@ -7,6 +7,13 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img {
     font: inherit;
 }
 
+h1 {
+    font-family: 'Kanit', sans-serif;
+    font-size: 2.5em;
+}
+p {
+    color: #000;
+}
 body {
     width: 100%;
     background-color: #dfd7f9;
@@ -14,15 +21,140 @@ body {
     justify-content: center;
 }
 main {
+    position: fixed;
     margin-top: 75px;
     width: 80%;
     height: 650px;
     background-color: #fff;
     display: flex;
     flex-direction: row;
+    
 }
 nav {
     width: 20%;
     text-align: center;
     border-right: #dfd7f9 solid 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
 }
+
+
+// left content
+#todoicon {
+    margin: 50px 0;
+}
+.titleInput {
+    margin: 20px;
+}
+button {
+    width: 150px;
+    padding: 5px 20px;
+    margin-bottom: 50px;
+    font-size: 1em;
+    font-family: 'Kanit', sans-serif;
+    border-radius: 50px;
+    background-color: #000;
+    color: #fff;
+}
+#todoLists {
+    padding-top: 50px;
+    height: 350px;
+    overflow-y: scroll;
+}
+#todoListContainer {
+    width: 200px;
+    
+}
+.closeWindowIcon {
+    margin-left: 10px;
+}
+
+
+// right content
+#todoListContainer {
+    width: 200;
+    display: flex;
+    justify-content: space-between;
+}
+#closeWindowIcon {
+    width: 20px;
+    height: 20px;
+}
+
+#content {
+    width: 950px;
+    display: flex;
+    flex-direction: column;
+}
+#createBoxContent {
+margin: 40px;
+display: flex;
+justify-content: space-between;
+flex-direction: row;
+align-items: center;
+}
+#createcontent {
+    display: flex;
+    flex-direction: column;
+}
+#contentinput {
+    margin: 0 0 0 80px;
+    height: 30px;
+    padding: 0 30px;
+    border: none;
+    outline:none;
+    border-left:#DFD7F9 solid 5px ;
+    border-right:#DFD7F9 solid 5px ;
+}
+#contentbutton {
+    margin: 0;
+}
+// .box {
+
+// }
+#roundedboxcontainer {
+    overflow-y: scroll;
+    width: 950px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#roundedbox {
+    margin: 20px 15px;
+    background-color: #DFD7F9;
+    border-radius: 30px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.pinLogo {
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
+}
+.Xlogo {
+    width: 30px;
+    height: 30px;
+}
+
+.myDiv {
+    height: 50px;
+    width: 50px;
+    border: 1px solid blue;
+  }
+
+// hides scrollbar
+::-webkit-scrollbar {
+    width: 0px;
+  }

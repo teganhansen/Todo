@@ -5,12 +5,120 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/todo icon darkpurple.png" type="image/x-icon" />
+    <script src="script.js"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Kanit&family=Rubik&display=swap" rel="stylesheet">
 </head>
 <body>
     <main>
-        <nav>hi</nav>
-        <div>yes</div>
+        <nav>
+            <div>
+                <img id="todoicon" src="images/todo icon darkpurple.png" alt="icon img">
+                <h1>TODO</h1>
+            </div>
+            <input type="text" placeholder="Todo Title" class="titleInput" />
+            <button>Submit</button>
+
+            <!-- bootstrap -->
+            <div id="todoLists" class="list-group list-group-flush">
+
+                <div id="todoListContainer">
+                    <a href="#" class="list-group-item list-group-item-action">list 1</a>
+                    <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+                </div>
+
+                <div id="todoListContainer">
+                    <a href="#" class="list-group-item list-group-item-action">list 2</a>
+                    <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+                </div>
+
+                <div id="todoListContainer">
+                    <a href="#" class="list-group-item list-group-item-action">list 3</a>
+                    <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+                </div>
+
+                <div id="todoListContainer">
+                    <a href="#" class="list-group-item list-group-item-action">list 4</a>
+                    <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+                </div>
+
+                <div id="todoListContainer">
+                    <a href="#" class="list-group-item list-group-item-action">list 5</a>
+                    <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+                </div>
+
+                <div id="todoListContainer">
+                    <a href="#" class="list-group-item list-group-item-action">list 6</a>
+                    <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+                </div>
+
+                <div id="todoListContainer">
+                    <a href="#" class="list-group-item list-group-item-action">list 7</a>
+                    <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+                </div>
+                <div id="todoListContainer">
+                    <a href="#" class="list-group-item list-group-item-action">list 8</a>
+                    <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+                </div>
+                <div id="todoListContainer">
+                    <a href="#" class="list-group-item list-group-item-action">list 9   </a>
+                    <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+                </div>
+
+              </div>
+              <!-- bootstrap -->
+        </nav>
+
+
+        <div id="content">
+            <div id = "createBoxContent">
+                <h1>List 1</h1> 
+                <input id="contentinput" type="text" placeholder="create list">
+                <button id="contentbutton">Submit</button>
+
+            </div>
+
+            <div id="roundedboxcontainer">
+                <div id="roundedbox">
+                    <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+                </div>
+    
+                <div id="roundedbox">
+                    <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+                </div>
+    
+                <div id="roundedbox">
+                    <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+                </div>
+
+                <div id="roundedbox">
+                    <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+                </div>
+                
+                <div id="roundedbox">
+                    <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+                </div>
+                
+                <div id="roundedbox">
+                    <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+                </div>
+            </div>
+
+            <!-- <div id="roundedbox">
+                <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+            </div>
+            
+            <div id="roundedbox">
+                <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+            </div> -->
+
+        </div>
     </main>
 </body>
 </html>
