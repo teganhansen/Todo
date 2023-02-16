@@ -1,12 +1,58 @@
+let comments = [];
 
-      function myFunction() {
-        document.getElementById("demo").innerHTML = "Hello Dear Visitor!</br> We are happy that you've chosen our website to learn programming languages. We're sure you'll become one of the best programmers in your country. Good luck to you!";
+      function onPageLoad() {
+        // add button listener
+        makeButtonWork();
       }
-//makes random boxes
-      var x = document.getElementById("theBoxes");
-x.addEventListener("click", myFunction)
-function myFunction() {
-  var box = document.createElement('div');
-  box.classList.add('myDiv');
-  document.body.appendChild(box); 
-}
+
+      function makeButtonWork() {
+        const buttonElement = document.querySelector("button");
+
+        buttonElement.addEventListener("click", handleOnClick);
+      }
+
+      function handleOnClick() {
+        // grab the input for the username
+        const username = document.querySelector("#todolistinput").value;
+    
+        // grab the input for the text area
+        // const comment = document.querySelector("textarea").value;
+        // then display
+        addNewComment(username);
+      }
+
+      function addNewComment(username) {
+        comments.push({
+          username,
+        });
+
+        renderComments();
+      }
+
+      function renderComments() {
+        const commentsElement = document.querySelector("#comments");
+        let newInnerHTML = "";
+        comments.forEach((commentItem) => {
+          const { username } = commentItem;
+          newInnerHTML += `<div id="todoListContainer">
+          <a href="#" id="comments" class="list-group-item list-group-item-action">${username}</a>
+          <img id="closeWindowIcon" src="images/trashcan.png" alt="">
+      </div>
+                            `;
+        });
+
+        commentsElement.innerHTML = newInnerHTML;
+      }
+
+      window.onload = onPageLoad;
+
+
+      
+    // function addItem(){
+    //     var li = document.createElement("LI");  
+    //     var input = document.getElementById("add");
+    //     li.innerHTML = input.value;
+    //     input.value = "";
+
+    //     document.getElementById("faves").appendChild(li);
+    // }
