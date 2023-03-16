@@ -99,7 +99,7 @@ button {
 }
 
 #createBoxContent {
-  margin: 40px;
+  margin: 30px 40px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -109,27 +109,25 @@ button {
 #createcontent {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: absolute;
 }
 
-#contentinput {
-  margin: 0 0 0 80px;
+.contentinput {
+  margin: 0 0 10px 325px;
   height: 30px;
-  padding: 0 30px;
-  border: none;
-  outline: none;
-  border-left: #DFD7F9 solid 5px;
-  border-right: #DFD7F9 solid 5px;
 }
 
-#contentbutton {
-  margin: 0;
+.contentbutton {
+  margin: 0 0 0 325px;
 }
 
 .clearAllButton {
   top: 30px;
 }
 
-#roundedboxcontainer {
+.roundedboxcontainer {
+  border-top: #DFD7F9 solid 3px;
   overflow-y: scroll;
   width: 950px;
   display: flex;
@@ -146,8 +144,12 @@ button {
   width: 250px;
   height: 300px;
   display: flex;
-  align-self: center;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.roundedbox h1 {
+  margin: 20px 15px;
+  font-size: 2em;
 }
 
 .pinLogo {

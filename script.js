@@ -1,8 +1,7 @@
 let comments = [];
-let listTitleName= [];
 
 // add button listener
-  function onPageLoad() {
+function onPageLoad() {
     makeButtonWork();
 }
 
@@ -16,7 +15,6 @@ function makeButtonWork() {
 // clear submit textarea
 function ClearFields() {
     document.getElementById("todolistinput").value = "";
-    // document.getElementById("textfield2").value = "";
 }
 
 // clear ALL todo titles
@@ -31,18 +29,18 @@ function handleOnClick() {
     const id = makeid(5);
 
     // grab the input for the text area
-    // const comment = document.querySelector("textarea").value;
     // then display
     addNewComment(username, id);
+    renderComments();
+    changeTODOtitle(username, id);
   }
 
 function addNewComment(username, id) {
     comments.push({
        username,
        id,
-    //    array [] 
+       arrayOfTasks: []
     });
-    renderComments();
 }
 
 function renderComments() {
@@ -52,12 +50,15 @@ function renderComments() {
         const { username, id } = commentItem;
         newInnerHTML += `
             <div class="todoListContainer" >
-                <a href="#" id="comments" class="list-group-item list-group-item-action" onclick="changeTODOtitle('${username}');">${username}</a>
-                 <img data-id="${id}" src="images/trashcan.png" alt="" onclick="deleteListTitle('${id}')">
+                <a href="#" id="comments" class="list-group-item list-group-item-action" onclick="changeTODOtitle('${username}', '${id}');">${username}</a>
+                 <img id="${id}" src="images/trashcan.png" alt="" onclick="deleteListTitle('${id}')">
             </div>
-        `;            
+        `;
+
+        
     });
     
+
     commentsElement.innerHTML = newInnerHTML; 
     ClearFields();  
 }
@@ -95,13 +96,85 @@ function makeid(length) {
     return result;
 }
 
+
+
+
+
 // right section
 
-function changeTODOtitle(username) {
-    document.getElementById("TODOlistTitle").value = '${username}';
-    // document.getElementById("textfield2").value = "";
+
+function changeTODOtitle(username, id) {
+    // document.getElementById("TODOlistTitle").innerHTML = `${username}`;
+        document.getElementById("TODOlistTitle").innerHTML = `${username}`;
+        createTaskSubmitButton(username, id);
+        
 }
 
-  window.onload = onPageLoad;
+// create task title and submit button
+function createTaskSubmitButton(username, id) {
+    const contentElement = document.querySelector("#createcontent");
+    // let newInnerHTML = "";
+    comments.forEach(() => {
+        newInnerHTML = `
+        <input id="taskInputBox" class="contentinput" type="text" placeholder="Create task">
+        <button onclick="handleTaskInput('${id}');" id="${id}" class="contentbutton">Submit</button>
+        `;
+    });
+    
+    contentElement.innerHTML = newInnerHTML; 
+}
+
+function handleTaskInput(commetsId) {
+    let newId = makeid(5)
+    const tasktext = document.querySelector("#taskInputBox").value;
+
+    addTaskToArray(newId, tasktext, commetsId);
+}
+
+function addTaskToArray(newId, tasktext, commentsId) {
+    let index = comments.findIndex(element => element.id === commentsId);
+    comments[index].arrayOfTasks.push( {task : tasktext , taskId : newId , select : false});
+
+    renderTask(commentsId, tasktext);
+}
+
+// creates the roundboxes
+function renderTask(commentsId, tasktext) {
+
+    const arrayOfTasksElement = document.querySelector("#taskbox");
+    let newInnerHTML = "";
+    comments.arrayOfTasks.forEach(commentItem => {
+        // const { username, id } = commentItem;
+        newInnerHTML = `
+        <div class="roundedbox">
+            <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+            <h1>${tasktext}</h1>
+        </div>
+        `;
+    });
+    ClearTaskBoxInput();
+
+    arrayOfTasksElement.innerHTML += newInnerHTML;
+    // comments[0].id.indexOf('k4kdr')
+   
+
+    // comments.findIndex()
+    // comments[0].id.indexOf(id)
+}
+
+// clear task submit textarea
+function ClearTaskBoxInput() {
+    document.getElementById("taskInputBox").value = " ";
+    // createTaskSubmitButton();
+}
+
+// clear ALL todo tasks
+function clearTaskButton() {
+    comments.arrayOfTasks.length = 0;
+    // comments.arrayOfTasks = [];
+    renderTask();
+}
+
+window.onload = onPageLoad;
   
  
