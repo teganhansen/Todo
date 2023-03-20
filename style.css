@@ -99,7 +99,7 @@ button {
 }
 
 #createBoxContent {
-  margin: 30px 40px;
+  margin: 0 40px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -120,6 +120,10 @@ button {
 
 .contentbutton {
   margin: 0 0 0 325px;
+}
+
+.clearcompletedtasksbutton {
+  margin-top: 30px;
 }
 
 .clearAllButton {
@@ -152,8 +156,25 @@ button {
   font-size: 2em;
 }
 
+#completedTask {
+  background-color: rgb(251, 245, 255);
+}
+
+.pinLogoContainer {
+  display: flex;
+  flex-direction: row;
+}
+
 .pinLogo {
   margin-top: 5px;
+  margin-left: 75px;
+  width: 30px;
+  height: 30px;
+}
+
+.pin2Logo {
+  margin-top: 5px;
+  margin-left: 50px;
   width: 30px;
   height: 30px;
 }

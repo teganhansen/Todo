@@ -95,12 +95,13 @@ button {
     flex-direction: column;
 }
 #createBoxContent {
-margin: 30px 40px;
+margin: 0 40px;
 display: flex;
 justify-content: space-between;
 flex-direction: row;
 align-items: center;
 }
+
 #createcontent {
     display: flex;
     flex-direction: column;
@@ -120,7 +121,9 @@ align-items: center;
 .contentbutton {
     margin: 0 0 0 325px;
 }
-
+.clearcompletedtasksbutton{
+    margin-top: 30px;
+}
 .clearAllButton {
     top: 30px;
 }
@@ -155,8 +158,40 @@ align-items: center;
         font-size: 2em;
     }
 }
+#completedTask{
+    background-color: rgb(251, 245, 255);
+}
+// .roundedbox:active {
+//     margin: 20px 15px;
+//     border: #DFD7F9 solid 5px;
+//     background-color: rgb(219, 245, 222);
+//     // background-color: #DFD7F9;
+//     border-radius: 30px;
+//     width: 250px;
+//     height: 300px;
+//     display: flex;
+//     align-items: center;
+//     // justify-self: center;
+//     flex-direction: column;
+
+//     h1 {
+//         margin: 20px 15px;
+//         font-size: 2em;
+//     }
+// }
+.pinLogoContainer {
+    display: flex;
+    flex-direction: row;
+}
 .pinLogo {
+    margin-top: 5px;  
+    margin-left: 75px;
+    width: 30px;
+    height: 30px;
+}
+.pin2Logo {
     margin-top: 5px;
+    margin-left: 50px;
     width: 30px;
     height: 30px;
 }

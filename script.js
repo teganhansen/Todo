@@ -51,9 +51,10 @@ function renderComments() {
         newInnerHTML += `
             <div class="todoListContainer" >
                 <a href="#" id="comments" class="list-group-item list-group-item-action" onclick="changeTODOtitle('${username}', '${id}');">${username}</a>
-                 <img id="${id}" src="images/trashcan.png" alt="" onclick="deleteListTitle('${id}')">
-            </div>
-        `;
+                <img id="${id}" src="images/trashcan.png" alt="" onclick="deleteListTitle('${id}')">
+                </div>
+                `;
+                console.log(renderTask);
 
         
     });
@@ -107,7 +108,7 @@ function changeTODOtitle(username, id) {
     // document.getElementById("TODOlistTitle").innerHTML = `${username}`;
         document.getElementById("TODOlistTitle").innerHTML = `${username}`;
         createTaskSubmitButton(username, id);
-        
+        renderTask(id);
 }
 
 // create task title and submit button
@@ -135,31 +136,41 @@ function addTaskToArray(newId, tasktext, commentsId) {
     let index = comments.findIndex(element => element.id === commentsId);
     comments[index].arrayOfTasks.push( {task : tasktext , taskId : newId , select : false});
 
-    renderTask(commentsId, tasktext);
+    renderTask(commentsId, select);
+}
+function findindexofarray(commentsId) {
+    let index = comments.findIndex(element => element.id === commentsId);
+    return index;
 }
 
 // creates the roundboxes
-function renderTask(commentsId, tasktext) {
-
+function renderTask(commentsId, select) {
+//    let index = findindexofarray(commentsId);
     const arrayOfTasksElement = document.querySelector("#taskbox");
     let newInnerHTML = "";
-    comments.arrayOfTasks.forEach(commentItem => {
-        // const { username, id } = commentItem;
-        newInnerHTML = `
-        <div class="roundedbox">
-            <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
-            <h1>${tasktext}</h1>
+    comments[findindexofarray(commentsId)].arrayOfTasks.forEach(commentItem => {
+        const { task, taskId } = commentItem;
+        newInnerHTML += `
+        <div class="roundedbox" onclick=" id='completedTask'" >
+            <div class="pinLogoContainer">
+                <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
+                <img onclick="deleteRoundBox('${taskId}', '${commentsId}')" class="pin2Logo" src="images/trashcan.png" alt="">
+            </div>
+            <h1>${task}</h1>
         </div>
         `;
     });
     ClearTaskBoxInput();
 
-    arrayOfTasksElement.innerHTML += newInnerHTML;
-    // comments[0].id.indexOf('k4kdr')
-   
+    arrayOfTasksElement.innerHTML = newInnerHTML;
+}
 
-    // comments.findIndex()
-    // comments[0].id.indexOf(id)
+function deleteRoundBox(taskId, commentsId) {
+   let index = findindexofarray(commentsId);
+   let taskIndex = comments[index].arrayOfTasks.findIndex(element => element.taskId === taskId);
+
+   comments[index].arrayOfTasks.splice(taskIndex , 1);    
+   renderTask(commentsId);
 }
 
 // clear task submit textarea
