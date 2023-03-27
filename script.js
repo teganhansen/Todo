@@ -112,17 +112,20 @@ function changeTODOtitle(username, id) {
 }
 
 // create task title and submit button
-function createTaskSubmitButton(username, id) {
+function createTaskSubmitButton(username, commentsId) {
     const contentElement = document.querySelector("#createcontent");
-    // let newInnerHTML = "";
+    const BoxContentElement = document.querySelector(".deleteboxbuttoncontainer");
+    let newInnerHTML = "";
     comments.forEach(() => {
         newInnerHTML = `
         <input id="taskInputBox" class="contentinput" type="text" placeholder="Create task">
-        <button onclick="handleTaskInput('${id}');" id="${id}" class="contentbutton">Submit</button>
+        <button onclick="handleTaskInput('${commentsId}');" id="${commentsId}" class="contentbutton">Submit</button>
+
         `;
     });
-    
+    let buttonInnerHTML = `<button id="contentbutton" class="clearcompletedtasksbutton" onclick="clearTaskButton('${commentsId}')";> Clear Completed tasks</button>`;
     contentElement.innerHTML = newInnerHTML; 
+    BoxContentElement.innerHTML = buttonInnerHTML
 }
 
 function handleTaskInput(commetsId) {
@@ -136,22 +139,26 @@ function addTaskToArray(newId, tasktext, commentsId) {
     let index = comments.findIndex(element => element.id === commentsId);
     comments[index].arrayOfTasks.push( {task : tasktext , taskId : newId , select : false});
 
-    renderTask(commentsId, select);
+    renderTask(commentsId);
 }
+
 function findindexofarray(commentsId) {
     let index = comments.findIndex(element => element.id === commentsId);
     return index;
 }
 
 // creates the roundboxes
-function renderTask(commentsId, select) {
+function renderTask(commentsId) {
 //    let index = findindexofarray(commentsId);
     const arrayOfTasksElement = document.querySelector("#taskbox");
     let newInnerHTML = "";
     comments[findindexofarray(commentsId)].arrayOfTasks.forEach(commentItem => {
-        const { task, taskId } = commentItem;
+        const { task, taskId, select} = commentItem;
+
+        // current idea is to make an if statment or call a function that's outside 
+
         newInnerHTML += `
-        <div class="roundedbox" onclick=" id='completedTask'" >
+        <div class="roundedbox ${select}" onclick="completeTaskToggler('${taskId}', '${commentsId}')"; >
             <div class="pinLogoContainer">
                 <img class="pinLogo" src="images/todo icon darkpurple.png" alt="">
                 <img onclick="deleteRoundBox('${taskId}', '${commentsId}')" class="pin2Logo" src="images/trashcan.png" alt="">
@@ -166,8 +173,8 @@ function renderTask(commentsId, select) {
 }
 
 function deleteRoundBox(taskId, commentsId) {
-   let index = findindexofarray(commentsId);
-   let taskIndex = comments[index].arrayOfTasks.findIndex(element => element.taskId === taskId);
+    let index = findindexofarray(commentsId);
+    let taskIndex = comments[index].arrayOfTasks.findIndex(element => element.taskId === taskId);
 
    comments[index].arrayOfTasks.splice(taskIndex , 1);    
    renderTask(commentsId);
@@ -180,12 +187,31 @@ function ClearTaskBoxInput() {
 }
 
 // clear ALL todo tasks
-function clearTaskButton() {
-    comments.arrayOfTasks.length = 0;
+function clearTaskButton(commentsId) {
+    let index = findindexofarray(commentsId);
+    // let taskIndex = comments[index].arrayOfTasks.findIndex(element => element.taskId === taskId);
+    comments[index].arrayOfTasks.forEach( array => {
+        comments[index].arrayOfTasks.forEach( (e, index1) =>  {
+            if (e.select === true) {
+                comments[index].arrayOfTasks.splice(index1, 1);
+            }
+        })
+    });
+
+    // comments.arrayOfTasks.length = 0;
     // comments.arrayOfTasks = [];
-    renderTask();
+    renderTask(commentsId);
 }
 
+// id='completedTask'
+function completeTaskToggler(taskId, commentsId) {
+    let index = findindexofarray(commentsId);
+    let taskIndex = comments[index].arrayOfTasks.findIndex(element => element.taskId === taskId);
+    comments[index].arrayOfTasks[taskIndex].select = true;
+    
+    renderTask(commentsId);
+    // return x;
+}
 window.onload = onPageLoad;
   
  

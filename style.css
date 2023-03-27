@@ -156,7 +156,7 @@ button {
   font-size: 2em;
 }
 
-#completedTask {
+.true {
   background-color: rgb(251, 245, 255);
 }
 
